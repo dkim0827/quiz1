@@ -1,0 +1,19 @@
+<%- include("./partials/header") %>
+<h1>SIGN IN / OUT</h1>
+
+<% if (username) { %>
+<form action="/signout" method="POST">
+    <input type="hidden" name="_method" value="DELETE" />
+    <span class><%= username %></span class><button class="btn btn-secondary" type="submit">Sign
+        Out</button>
+</form>
+<% } else { %>
+<form action="/signin" method="POST">
+    <input type="text" name="username" placeholder="e.g. Madam Welminster" />
+
+    <button type="submit">Sign In</button>
+</form>
+<% } %>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<%- include("./partials/header") %>
+<h1>Posts</h1>
+<div class="post-cards">
+    <% for (let cluck of clucks) { %>
+    <div class="card mb-4">
+        <div class="card-picture">
+            <img src=/image/logo2.jpg style="width: 60px; height: 60px;" alt="tweet_logo">
+        </div>
+        <div class="main-content">
+            <%= dateHelper(cluck.createdAt) %>
+            <% if(cluck.content != "") {%>
+            <p class="card-text"><%= cluck.content %></p>
+            <% }%>
+            <% if(cluck.image_url != "") { %>
+            <img class="content_img" src="<%= cluck.image_url%>" />
+            <% } %>
+        </div>
+    </div>
+    <% } %>
+</div>
+
+</body>
+
+</html>
