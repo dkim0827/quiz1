@@ -7,7 +7,6 @@
             <img src=/image/logo2.jpg style="width: 60px; height: 60px;" alt="tweet_logo">
         </div>
         <div class="main-content">
-            <%= dateHelper(cluck.createdAt) %>
             <% if(cluck.content != "") {%>
             <p class="card-text"><%= cluck.content %></p>
             <% }%>
