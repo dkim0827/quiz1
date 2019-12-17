@@ -1,9 +1,14 @@
 const router = require('express').Router()
 const queries = require('../db/queries')
+const dateHelper = require('./helpers/date_helper')
 
 router.get('/', (req, res) => {
     queries.getAll()
         .orderBy('createdAt', "desc").then(clucks => {
+            clucks = clucks.map(cluck => {
+                cluck.easydate = dateHelper(cluck.createdAt)
+                return cluck
+            })
             res.render('index', {
                 clucks
             })
@@ -47,6 +52,7 @@ router.post('/', (req, res) => {
             username: req.cookies.username,
             content: req.body.content,
             image_url: req.body.image_url
+
         }).then(cluck => {
             res.redirect('/')
         })
